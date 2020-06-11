@@ -38,6 +38,8 @@ dependencies {
     // don't require this additional model):
     implementation 'com.google.firebase:firebase-ml-vision-face-model:20.0.1'
     implementation 'com.google.firebase:firebase-ml-vision-image-label-model:20.0.1'
+    implementation 'com.firebaseui:firebase-ui-auth:6.2.0'
+    implementation 'com.google.firebase:firebase-auth:19.3.1'
 
 
     testImplementation 'junit:junit:4.12'

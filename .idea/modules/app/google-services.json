@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "252402829138",
+    "firebase_url": "https://smileit-75b30.firebaseio.com",
+    "project_id": "smileit-75b30",
+    "storage_bucket": "smileit-75b30.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:252402829138:android:c46b997a84243186ab1c8b",
+        "android_client_info": {
+          "package_name": "com.smileit.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "252402829138-n9snhh44e379bcd7gcfdnurkgqufg9rs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.smileit.app",
+            "certificate_hash": "349a1910c021a9a9690791d640a6cf0c2db7c3f0"
+          }
+        },
+        {
+          "client_id": "252402829138-nio0our2k1chnnl5akvp47859tlg45qn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC6v0wcHdX9dy-oLMqqhvhePvbcXr5VXgM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "252402829138-nio0our2k1chnnl5akvp47859tlg45qn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -24,4 +24,11 @@
         android:icon="@drawable/ic_info"
         app:showAsAction="ifRoom"/>
 
+    <item
+        android:id="@+id/action_signout"
+        android:orderInCategory="104"
+        android:title="@string/action_signout"
+        android:icon="@drawable/ic_signout"
+        app:showAsAction="ifRoom"/>
+
 </menu>

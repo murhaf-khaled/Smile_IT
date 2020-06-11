@@ -19,8 +19,13 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 
 import android.widget.Toast;
+
+import com.firebase.ui.auth.AuthUI;
+import com.firebase.ui.auth.IdpResponse;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.ml.vision.FirebaseVision;
 import com.google.firebase.ml.vision.face.FirebaseVisionFace;
 import com.google.firebase.ml.vision.face.FirebaseVisionFaceDetector;
@@ -31,6 +36,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.ml.vision.label.FirebaseVisionImageLabel;
 import com.google.firebase.ml.vision.label.FirebaseVisionImageLabeler;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class MainActivity extends BaseActivity  {
@@ -51,6 +57,25 @@ public class MainActivity extends BaseActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Choose authentication providers
+        List<AuthUI.IdpConfig> providers = Arrays.asList(
+                new AuthUI.IdpConfig.EmailBuilder().build(),
+                new AuthUI.IdpConfig.PhoneBuilder().build());
+
+        // Create and launch sign-in intent
+
+        startActivityForResult(
+                AuthUI.getInstance()
+                        .createSignInIntentBuilder()
+                        .setAvailableProviders(providers)
+                       // .setLogo(R.drawable.my_great_logo)      // Set logo drawable
+                       // .setTheme(R.style.MySuperAppTheme)      // Set theme
+                        .build(),
+                RC_SIGN_IN);
+
+
+
         llHappy = (LinearLayout) findViewById(R.id.happyLL);
         llSad = (LinearLayout) findViewById(R.id.sadLL);
         llClass = (LinearLayout) findViewById(R.id.labelLL);
@@ -65,6 +90,22 @@ public class MainActivity extends BaseActivity  {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == RC_SIGN_IN) {
+            IdpResponse response = IdpResponse.fromResultIntent(data);
+
+            if (resultCode == RESULT_OK) {
+                // Successfully signed in
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                // ...
+            } else {
+                // Sign in failed. If response is null the user canceled the
+                // sign-in flow using the back button. Otherwise check
+                // response.getError().getErrorCode() and handle the error.
+                // ...
+                Toast.makeText(getApplicationContext(),response.getError().toString(),Toast.LENGTH_LONG).show();
+            }
+        }
         if (resultCode == RESULT_OK) {
             switch (requestCode) {
                 case WRITE_STORAGE:

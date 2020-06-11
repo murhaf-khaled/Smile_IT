@@ -7,6 +7,7 @@
     <string name="storage_denied">This app needs to access files on your device.</string>
     <string name="action_camera">Camera</string>
     <string name="action_info">Info</string>
+    <string name="action_signout">Sign out</string>
     <string name="camera_denied">This app need to access the camera.</string>
     <string name="error">Cannot access ML Kit</string>
 </resources>

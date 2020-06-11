@@ -12,6 +12,10 @@ import android.view.MenuItem;
 import android.provider.Settings;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import com.firebase.ui.auth.AuthUI;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.ActionBar;
@@ -36,6 +40,7 @@ public class BaseActivity extends AppCompatActivity {
     public static final int CAMERA = 102;
     public static final int SELECT_PHOTO = 103;
     public static final int TAKE_PHOTO = 104;
+    public static final int RC_SIGN_IN = 123;
     public static final String ACTION_BAR_TITLE = "action_bar_title";
     public File photoFile;
 
@@ -71,6 +76,18 @@ public class BaseActivity extends AppCompatActivity {
                 alert.setMessage("This App developed by Murhaf Khaled");
                 alert.setPositiveButton("OK",null);
                 alert.show();
+                break;
+            case R.id.action_signout:
+                AuthUI.getInstance()
+                        .signOut(this)
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            public void onComplete(@NonNull Task<Void> task) {
+                                // ...
+                                finish();
+                                System.exit(0);
+                            }
+                        });
+
                 break;
         }
         return super.onOptionsItemSelected(item);
